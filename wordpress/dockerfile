@@ -4,13 +4,13 @@ RUN apt-get update && apt-get install -y php-cgi php php-fpm php-mysql php-pdo p
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
-COPY script.sh /var/www/html
+COPY script.sh /usr/local/bin/
 
-WORKDIR /var/www/html
+WORKDIR /var/www/html/
 
-RUN mkdir -p /run/php
+RUN mkdir -p /run/php/
 
-RUN chmod 777 script.sh && ./script.sh
+RUN chmod 777 /usr/local/bin/script.sh && /usr/local/bin/script.sh
 
 COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/
 
