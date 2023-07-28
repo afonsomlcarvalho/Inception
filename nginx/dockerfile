@@ -1,7 +1,7 @@
 FROM debian:oldstable
 
-RUN apt-get update && apt-get install -y nginx && apt-get install openssl
-COPY /conf/nginx.conf /etc/nginx/conf.d/
+RUN apt-get update && apt-get install -y nginx openssl
+COPY ./conf/nginx.conf /etc/nginx/conf.d
 
 #ssl
 RUN mkdir /etc/nginx/ssl

@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  wordpress:
+    container_name: wordpress
+    build: ./wordpress
+    image: wordpress
+    # depends_on:
+    #   - mariadb
+    networks:
+      - inception_network
+    volumes:
+      - webfiles:/var/www/html
+
+  # mariadb:
+  #   container_name: mariadb
+  #   build: ./mariadb
+  #   image: mariadb
+  #   networks:
+  #     - inception_network
+  #   env_file:
+  #     - .env
+
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    image: nginx
+    networks:
+      - inception_network
+    ports:
+      - "443:443"
+    volumes:
+      - webfiles:/var/www/html
+
+volumes:
+  # database:
+  webfiles:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/amorais/data/webfiles
+      o: bind
+
+networks:
+  inception_network: {}
