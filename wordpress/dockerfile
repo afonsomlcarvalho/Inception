@@ -10,10 +10,12 @@ RUN mkdir -p /run/php/
 
 COPY script.sh /usr/local/bin
 
-RUN chmod +x /usr/local/bin/script.sh && script.sh
+RUN chmod +x /usr/local/bin/script.sh
 
 WORKDIR /var/www/html/
 
 EXPOSE 9000
+
+RUN script.sh
 
 CMD ["/usr/sbin/php-fpm7.4", "-F"]
