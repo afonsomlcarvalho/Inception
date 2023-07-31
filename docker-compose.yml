@@ -38,7 +38,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/amorais/data/webfiles
+      device: /home/amorais-/data/webfiles
       o: bind
 
 networks:

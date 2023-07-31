@@ -6,7 +6,7 @@ tar -xzf wordpress.tar.gz
 
 mv wordpress/* .
 
-rm -rf wordpress.tar.gz/* wordpress/*
+rm -rf wordpress.tar.gz/* wordpress/
 
 cp wp-config-sample.php wp-config.php
 
