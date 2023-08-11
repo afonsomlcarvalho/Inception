@@ -10,6 +10,8 @@ WORKDIR /var/local/
 
 # RUN chmod +x mariadb.sql
 
-RUN chmod +x mariadb.sh && ./mariadb.sh
+RUN chmod +x mariadb.sh
+
+ENTRYPOINT [ "./mariadb.sh" ]
 
 CMD [ "mysqld", "--bind-address=0.0.0.0" ]

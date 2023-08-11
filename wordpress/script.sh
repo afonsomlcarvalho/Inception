@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 
 wget -qO wordpress.tar.gz https://wordpress.org/latest.tar.gz
 
