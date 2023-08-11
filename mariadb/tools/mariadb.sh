@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 
 service mariadb start
 mysql_upgrade --force
@@ -22,3 +22,5 @@ CREATE DATABASE IF NOT EXISTS $DATABASENAME; GRANT ALL ON $DATABASENAME.* TO '$U
 EOF
 
 # mariadb -u $MYSQL_DB_USER -p$MYSQL_DB_PASSWORD $MYSQL_DB_NAME < /usr/local/bin/wordpress.sql
+
+exec "$@"
