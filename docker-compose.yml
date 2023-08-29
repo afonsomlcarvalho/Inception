@@ -1,56 +1,56 @@
-version: "3"
+version: '3'
 
 services:
   nginx:
     container_name: nginx
     build: ./nginx
-    networks:
-      - inception_network
     ports:
-      - "443:443"
+      - 443:443
     volumes:
       - webfiles:/var/www/html
-    env_file:
-      - .env
-
-
-  wordpress:
-    container_name: wordpress
-    build: ./wordpress
-    depends_on:
-      - mariadb
+    restart: always
     networks:
       - inception_network
-    volumes:
-      - webfiles:/var/www/html
-      - database:/var/local
-    env_file:
-      - .env
-
 
   mariadb:
     container_name: mariadb
     build: ./mariadb
+    volumes:
+      - database:/var/lib/mysql
     networks:
       - inception_network
+    restart: always
     env_file:
       - .env
+
+  wordpress:
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    build: ./wordpress
+    networks:
+      - inception_network
     volumes:
+      - webfiles:/var/www/html
       - database:/var/local
+    env_file:
+      - .env
+
 
 volumes:
   database:
     driver: local
     driver_opts:
       type: none
-      device: /home/amorais-/data/database
+      device: /home/afonsomlcarvalho/data/database
       o: bind
   webfiles:
     driver: local
     driver_opts:
       type: none
-      device: /home/amorais-/data/webfiles
+      device: /home/afonsomlcarvalho/data/webfiles
       o: bind
 
 networks:
-  inception_network: {}
+  inception_network:
+    driver: bridge
