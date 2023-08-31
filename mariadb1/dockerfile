@@ -1,8 +1,10 @@
-FROM debian:oldstable
+FROM debian:buster
 
 RUN apt-get update && apt-get install -y mariadb-server mariadb-client
 
 COPY ./tools/mariadb.sh /var/local/
+
+COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
 # COPY ./tools/mariadb.sql /var/local/bin
 

@@ -1,6 +1,6 @@
-FROM debian:oldstable
+FROM debian:buster
 
-RUN apt-get update && apt-get install -y php-cgi php7.4 php-fpm php-mysql php-pdo php-gd php-cli php-mbstring wordpress wget tar curl bash
+RUN apt-get update && apt-get install -y php-cgi php7.4 php-fpm php-mysql php-pdo php-gd php-cli php-mbstring wordpress wget tar curl bash mariadb-client
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
