@@ -14,4 +14,6 @@ mysql -e "FLUSH PRIVILEGES;"
 
 mysqladmin -u root -p$MYSQL_ROOT_PASSWORD shutdown
 
+mysql -uroot -p$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE < /usr/local/bin/wordpress.sql
+
 exec mysqld_safe

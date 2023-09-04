@@ -3,7 +3,7 @@ version: '3'
 services:
   nginx:
     container_name: nginx
-    build: ./nginx
+    build: ./requirements/nginx
     ports:
       - 443:443
     volumes:
@@ -14,7 +14,7 @@ services:
 
   mariadb:
     container_name: mariadb
-    build: ./mariadb
+    build: ./requirements/mariadb
     volumes:
       - database:/var/lib/mysql
     networks:
@@ -27,7 +27,7 @@ services:
     container_name: wordpress
     depends_on:
       - mariadb
-    build: ./wordpress
+    build: ./requirements/wordpress
     networks:
       - inception_network
     volumes:
