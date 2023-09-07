@@ -6,6 +6,7 @@ down:
 
 clean: down
 	docker system prune
-	docker image prune -a
+	sudo rm -rf ~/data/mysql/* ~/data/wordpress/*
 
 fclean: clean
+	docker image prune -a
