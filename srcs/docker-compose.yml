@@ -45,13 +45,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/amorais-/data/database
+      device: /home/afonsomlcarvalho/data/database
       o: bind
   webfiles:
     driver: local
     driver_opts:
       type: none
-      device: /home/amorais-/data/webfiles
+      device: /home/afonsomlcarvalho/data/webfiles
       o: bind
 
 networks:

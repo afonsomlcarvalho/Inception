@@ -2,10 +2,8 @@ FROM debian:buster
 
 RUN apt-get update && apt-get install -y nginx openssl
 
-#ssl
 RUN mkdir /etc/nginx/ssl
 RUN openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes -subj "/C=PT/ST=Lisboa/L=Lisboa/O=amorais-/OU=inception/CN=amorais-" -keyout "/etc/nginx/ssl/amorais-.key" -out "/etc/nginx/ssl/amorais-.crt"
-#endssl
 
 COPY ./conf/nginx.conf /etc/nginx/conf.d
 

@@ -17,3 +17,5 @@ RUN chmod +x mariadb_script.sh
 EXPOSE 3306
 
 ENTRYPOINT [ "./mariadb_script.sh" ]
+
+CMD ["mysqld", "--bind-address=0.0.0.0"]
