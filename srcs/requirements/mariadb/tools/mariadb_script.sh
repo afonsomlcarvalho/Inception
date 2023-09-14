@@ -4,7 +4,7 @@ service mysql start;
 
 if [ -d "/var/lib/mysql/$MYSQL_DATABASE" ]
 then
-	echo -e "\033[1;33mMariaDB already setup\033[0m"
+	echo "MariaDB already setup"
 
 else
 
@@ -23,7 +23,5 @@ mysql -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE < /usr/local/bin/wordpress
 fi
 
 mysqladmin -u root -p$MYSQL_ROOT_PASSWORD shutdown
-
-exec mysqld_safe
 
 exec "$@"
